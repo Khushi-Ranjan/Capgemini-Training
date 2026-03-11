@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean id="car1" class="ioc_with_xml.Car">
+        <property name="name" value="BMW"/>
+        <property name="model_id" value="2024"/>
+    </bean>
+
+    <bean id="car2" class="ioc_with_xml.Car">
+        <property name="name" value="Audi"/>
+        <property name="model_id" value="2023"/>
+    </bean>
+
+    <bean id="car3" class="ioc_with_xml.Car">
+        <property name="name" value="Mercedes"/>
+        <property name="model_id" value="2025"/>
+    </bean>
+
+    <bean id="car4" class="ioc_with_xml.Car">
+        <property name="name" value="Toyota"/>
+        <property name="model_id" value="2022"/>
+    </bean>
+
+    <bean id="car5" class="ioc_with_xml.Car">
+        <property name="name" value="Tesla"/>
+        <property name="model_id" value="2024"/>
+    </bean>
+
+</beans>

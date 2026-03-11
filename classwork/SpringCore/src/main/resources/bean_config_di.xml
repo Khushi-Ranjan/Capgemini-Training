@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Engine beans (defined once and reused) -->
+
+    <bean id="engineA" class="dependency_injection.Engine">
+        <property name="id" value="1"/>
+        <property name="type" value="V8"/>
+        <property name="horsepower" value="450"/>
+    </bean>
+
+    <bean id="engineB" class="dependency_injection.Engine">
+        <property name="id" value="2"/>
+        <property name="type" value="V6"/>
+        <property name="horsepower" value="380"/>
+    </bean>
+
+    <bean id="engineX" class="dependency_injection.Engine1">
+        <property name="id" value="3"/>
+        <property name="type" value="Electric"/>
+        <property name="horsepower" value="500"/>
+    </bean>
+
+
+    <!-- Car beans -->
+
+    <bean id="car1" class="dependency_injection.Car">
+        <property name="name" value="BMW"/>
+        <property name="model_id" value="2024"/>
+        <property name="engines">
+            <list>
+                <ref bean="engineA"/>
+                <ref bean="engineB"/>
+            </list>
+        </property>
+        <property name="engines1">
+            <list>
+                <ref bean="engineX"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="car2" class="dependency_injection.Car">
+        <property name="name" value="Audi"/>
+        <property name="model_id" value="2023"/>
+        <property name="engines">
+            <list>
+                <ref bean="engineA"/>
+            </list>
+        </property>
+        <property name="engines1">
+            <list>
+                <ref bean="engineX"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="car3" class="dependency_injection.Car">
+        <property name="name" value="Mercedes"/>
+        <property name="model_id" value="2025"/>
+        <property name="engines">
+            <list>
+                <ref bean="engineB"/>
+            </list>
+        </property>
+        <property name="engines1">
+            <list>
+                <ref bean="engineX"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="car4" class="dependency_injection.Car">
+        <property name="name" value="Toyota"/>
+        <property name="model_id" value="2022"/>
+        <property name="engines">
+            <list>
+                <ref bean="engineA"/>
+            </list>
+        </property>
+        <property name="engines1">
+            <list>
+                <ref bean="engineX"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="car5" class="dependency_injection.Car">
+        <property name="name" value="Tesla"/>
+        <property name="model_id" value="2024"/>
+        <property name="engines">
+            <list>
+                <ref bean="engineB"/>
+            </list>
+        </property>
+        <property name="engines1">
+            <list>
+                <ref bean="engineX"/>
+            </list>
+        </property>
+    </bean>
+
+</beans>
