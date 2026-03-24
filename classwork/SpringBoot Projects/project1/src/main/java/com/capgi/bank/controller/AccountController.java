@@ -8,6 +8,7 @@ import com.capgi.bank.service.AccountService;
 import lombok.RequiredArgsConstructor;
 import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,6 +18,10 @@ import org.springframework.web.bind.annotation.*;
 public class AccountController {
 
     private final AccountService accountService;
+    @PostMapping(
+            value = "/xml",
+            consumes = MediaType.APPLICATION_ATOM_XML_VALUE)
+    )
 
     @PostMapping("/create")
     public ResponseEntity<ResponseDto> createAccount(@RequestBody AccountDto accountDto){
@@ -34,5 +39,16 @@ public class AccountController {
                 new ResponseDto("200", AccountConstant.Message_get, accountResponseDto)
         );
     }
+
+    @GetMapping("/exception")
+    public ResponseEntity<ResponseDto>exceptionHandlingfindById(@RequestParam Integer id){
+
+        AccountResponseDto accountResponseDto = accountService.getAccountById(id);
+
+        return ResponseEntity.ok(
+                new ResponseDto("200", AccountConstant.Message_get, accountResponseDto)
+        );
+    }
+
 
 }

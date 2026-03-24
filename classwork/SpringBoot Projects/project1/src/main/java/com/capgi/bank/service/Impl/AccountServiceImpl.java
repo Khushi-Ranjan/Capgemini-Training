@@ -14,6 +14,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import javax.security.auth.login.AccountNotFoundException;
 import java.util.Optional;
 
 @Service
@@ -36,6 +37,12 @@ public class AccountServiceImpl implements AccountService {
                 .orElseThrow(() -> new RuntimeException("Account not found"));
 
         return modelMapper.map(account, AccountResponseDto.class);
+    }
+    @Override
+    public AccountResponseDto findById(Integer id){
+        Account account = accountRepository.findById(id);
+        .orElseThrow(() -> new AccountNotFoundException("Account not found by your id "+ id));
+         return modelMapper.map(account, AccountDto.class);
     }
 
 
